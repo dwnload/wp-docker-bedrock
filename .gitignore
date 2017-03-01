@@ -1,0 +1,43 @@
+# Version Control
+.svn
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.buildpath
+.project
+.settings/
+.build/
+.idea/
+nbproject/
+/tags
+.netbeans.xml
+
+# Compass/SASS/SCSS
+.sass-cache
+
+# Other
+node_modules
+
+bin/composer.phar
+/vendor/
+/release/
+sassdoc
+scss-lint-report.xml
+config.codekit
+
+/config/elasticsearch/plugins/*
+
+/data/*
+!/data/.gitkeep
+
+/site/*
+!/site/.gitkeep
+# Add you're Bedrock config files, etc to not-ignore
+#!/site/config
+
+docker-compose.override.yml
+
+notes.md
