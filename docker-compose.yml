@@ -15,14 +15,6 @@ services:
   memcached:
     image: memcached:latest
     restart: always
-  elasticsearch:
-    image: elasticsearch:5
-    restart: always
-    ports:
-      - "9200:9200"
-    volumes:
-      - "./config/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml"
-      - "./config/elasticsearch/plugins:/usr/share/elasticsearch/plugins"
   phpfpm:
     depends_on:
       - mysql
