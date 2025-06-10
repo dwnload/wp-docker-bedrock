@@ -1,0 +1,18 @@
+name: CI Setup
+description: "Sets up the environment for jobs during CI workflow"
+# https://alejandrocelaya.blog/2022/08/19/how-to-reduce-duplication-in-your-github-actions-workflows/
+
+outputs:
+  files:
+    description: 'All changed files'
+    value: ${{ steps.files.outputs.all }}
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Get Changed Files
+      id: files
+      uses: masesgroup/retrieve-changed-files@v3
