@@ -1,6 +1,3 @@
-# Version Control
-.svn
-
 # OS
 .DS_Store
 Thumbs.db
@@ -11,33 +8,26 @@ Thumbs.db
 .settings/
 .build/
 .idea/
-nbproject/
-/tags
 .netbeans.xml
 
 # Compass/SASS/SCSS
 .sass-cache
 
 # Other
+.env
 node_modules
 
 bin/composer.phar
 /vendor/
-/release/
-sassdoc
-scss-lint-report.xml
-config.codekit
-
-/config/elasticsearch/plugins/*
 
 /data/*
 !/data/.gitkeep
 
-/site/*
-!/site/.gitkeep
+/web/*
+!/web/.gitkeep
+!/web/index.php
+!/web/wp-config.php
 # Add you're Bedrock config files, etc to not-ignore
 #!/site/config
 
 docker-compose.override.yml
-
-notes.md
