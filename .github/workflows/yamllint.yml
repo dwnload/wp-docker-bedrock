@@ -11,8 +11,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup
+        id: ci-setup
+        uses: ./.github/actions/ci-setup
+
       - name: PIP Install
+        if: ${{ contains(hashFiles('*.yml'), steps.ci-setup.outputs.files) }}
         run: pip install yamllint
 
       - name: Lint YAML files
+        if: ${{ contains(hashFiles('*.yml'), steps.ci-setup.outputs.files) }}
         run: yamllint --format github .
