@@ -1,5 +1,6 @@
 version: '2'
 services:
+
   mysql:
     image: mariadb:latest
     volumes:
@@ -12,9 +13,7 @@ services:
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: password
-  memcached:
-    image: memcached:latest
-    restart: always
+
   phpfpm:
     depends_on:
       - mysql
@@ -28,6 +27,7 @@ services:
     build: ./dockerfiles/php-fpm
     extra_hosts:
       - "wp-docker-bedrock.dev:172.18.0.1"
+
   nginx:
     depends_on:
       - phpfpm
@@ -38,3 +38,18 @@ services:
       - "./site/web:/var/www/html"
       - "./config/nginx/default.conf:/etc/nginx/conf.d/default.conf"
     restart: always
+
+  redis:
+    image: redis:7.4-alpine
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    # launch Redis in cache mode with:
+    #  - max memory up to 50% of your RAM if needed (--maxmemory 512mb)
+    #  - deleting the oldest data when max memory is reached (--maxmemory-policy allkeys-lru)
+    command:
+      - redis-server
+      - --save 60 1
+      - --loglevel warning
+      - --maxmemory 128mb
+      - --maxmemory-policy allkeys-lru
