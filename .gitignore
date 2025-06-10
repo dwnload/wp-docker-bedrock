@@ -17,13 +17,14 @@ Thumbs.db
 .env
 node_modules
 
-bin/composer.phar
 /vendor/
+composer.lock
 
 /data/*
 !/data/.gitkeep
 
 /web/*
+!/web/app/*/.gitkeep
 !/web/.gitkeep
 !/web/index.php
 !/web/wp-config.php
