@@ -4,7 +4,7 @@ This is a Docker based local development environment for WordPress with Roots Be
 
 ## What's Inside
 
-This project is based on [docker-compose](https://docs.docker.com/compose/). By default, the following containers are
+This project is based on [docker compose](https://docs.docker.com/compose/). By default, the following containers are
 started: PHP-FPM, MariaDB, Elasticsearch, nginx, and Memcached. The `/site/web` directory is the web root which is
 mapped to the nginx container. See [Bedrock](https://github.com/roots/bedrock) for more info.
 
@@ -22,13 +22,13 @@ drop Elasticsearch plugins in this folder to have them installed within the cont
 ## Requirements
 
 * [Docker](https://www.docker.com/)
-* [docker-compose](https://docs.docker.com/compose/)
+* [docker compose](https://docs.docker.com/compose/)
 
 ## Setup
 
 1. `git clone git@github.com:dwnload/wp-docker-bedrock.git <my-project-name>`
 1. `cd <my-project-name>`
-1. `docker-compose up`
+1. `docker compose up`
 1. Run `bash ./bin/setup.sh` to download Bedrock.
 
 Default MySQL connection information (from within PHP-FPM container):
@@ -62,7 +62,7 @@ services:
 Add this alias to `~/.bash_profile` to easily run WP-CLI command.
 
 ```
-alias dcwp='docker-compose exec --user www-data phpfpm wp'
+alias dcwp='docker compose exec --user www-data phpfpm wp'
 ```
 
 Instead of running a command like `wp plugin install` you instead run `dcwp plugin install` from anywhere inside the
@@ -72,10 +72,10 @@ There is also a script in the `/bin` directory that will allow you to execute WP
 
 ## SSH Access
 
-You can easily access the WordPress/PHP container with `docker-compose exec`. Here's a simple alias to add to your `~/.bash_profile`:
+You can easily access the WordPress/PHP container with `docker compose exec`. Here's a simple alias to add to your `~/.bash_profile`:
 
 ```
-alias dcbash='docker-compose exec --user root phpfpm bash'
+alias dcbash='docker compose exec --user root phpfpm bash'
 ```
 
 This alias lets you run `dcbash` to SSH into the PHP/WordPress container.
