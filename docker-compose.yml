@@ -22,7 +22,8 @@ services:
     restart: always
     env_file: .env
     depends_on:
-      - php-fpm
+      php-fpm:
+        condition: service_started
     ports:
       - "8080:80"
       - "9443:443"
@@ -35,16 +36,19 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfiles/php-fpm/Dockerfile
+      target: dev
       args:
         PHP_VERSION: "${PHP_VERSION}"
+        WITH_XDEBUG: ${WITH_XDEBUG}
     restart: always
     env_file: .env
     depends_on:
-      - mariadb
-      - redis
+      mariadb:
+        condition: service_started
+      redis:
+        condition: service_started
     volumes:
       - "./web:/var/www/html"
-      - "./config/php-fpm/docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini"
       - "./config/php-fpm/php.ini:/usr/local/etc/php/php.ini"
     extra_hosts:
       - "${HTTP_HOST}:172.18.0.1"
