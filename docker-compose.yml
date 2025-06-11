@@ -28,13 +28,8 @@ services:
       - "8080:80"
       - "9443:443"
     volumes:
-      - "./config/environments/:/var/www/html/config/environments/"
       - "./config/nginx/default.conf:/etc/nginx/conf.d/default.conf"
       - "./config/ssl:/etc/ssl"
-      - "./config/application.php:/var/www/html/config/application.php"
-      - "./vendor/:/var/www/html/vendor"
-      - "./web:/var/www/html/web"
-      - "./wp-cli.yml:/var/www/html/wp-cli.yml"
 
   php-fpm:
     build:
@@ -52,25 +47,21 @@ services:
       redis:
         condition: service_started
     volumes:
-      - "./config/environments/:/var/www/html/config/environments/"
       - "./config/php-fpm/php.ini:/usr/local/etc/php/php.ini"
-      - "./config/application.php:/var/www/html/config/application.php"
-      - "./vendor:/var/www/html/vendor"
-      - "./web:/var/www/html/web"
-      - "./wp-cli.yml:/var/www/html/wp-cli.yml"
-    extra_hosts:
-      - "${HTTP_HOST}:172.18.0.1"
+      - "web:/var/www/html"
+    #extra_hosts:
+    #  - "${HTTP_HOST}:172.17.0.1"
 
   redis:
     image: redis:7.4-alpine
     restart: always
     expose:
       - "6379"
+    volumes:
+      - "redis:/data"
     # launch Redis in cache mode with:
     #  - max memory up to 50% of your RAM if needed (--maxmemory 512mb)
     #  - deleting the oldest data when max memory is reached (--maxmemory-policy allkeys-lru)
-    volumes:
-      - "redis:/data"
     command:
       - redis-server
       - --save 60 1
@@ -81,3 +72,4 @@ services:
 volumes:
   mariadb:
   redis:
+  web:
