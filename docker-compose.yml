@@ -7,9 +7,9 @@ services:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
-      MYSQL_DATABASE: "${WORDPRESS_DB_NAME}"
-      MYSQL_USER: "${MYSQL_USER}"
-      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+      MYSQL_DATABASE: "${DB_NAME}"
+      MYSQL_USER: "${DB_USER}"
+      MYSQL_PASSWORD: "${DB_PASSWORD}"
     volumes:
       - "mariadb:/var/lib/mysql"
 
@@ -27,6 +27,11 @@ services:
     ports:
       - "8080:80"
       - "9443:443"
+    environment:
+      NGINX_WEBROOT: "/var/www/html/web"
+      SSL_MODE: "${SSL_MODE}"
+      SSL_PRIVATE_KEY_FILE: "/etc/ssl/localhost.key"
+      SSL_CERTIFICATE_FILE: "/etc/ssl/localhost.crt"
     volumes:
       - "./config/nginx/default.conf:/etc/nginx/conf.d/default.conf"
       - "./config/ssl:/etc/ssl"
@@ -46,8 +51,9 @@ services:
         condition: service_started
       redis:
         condition: service_started
+    environment:
+      APP_BASE_DIR: "/var/www/html/web"
     volumes:
-      - "./config/php-fpm/php.ini:/usr/local/etc/php/php.ini"
       - "web:/var/www/html"
     #extra_hosts:
     #  - "${HTTP_HOST}:172.17.0.1"
