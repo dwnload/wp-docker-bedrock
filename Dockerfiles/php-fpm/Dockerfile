@@ -1,6 +1,6 @@
 ARG PHP_VERSION=8.3
 ARG WITH_XDEBUG=true
-FROM serversideup/php:${PHP_VERSION}-fpm-alpine AS base
+FROM serversideup/php:${PHP_VERSION}-fpm AS base
 
 USER root
 
