@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker compose exec --user www-data phpfpm wp "$@"
+docker compose exec --user www-data php-fpm wp "$@"
