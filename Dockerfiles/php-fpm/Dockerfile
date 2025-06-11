@@ -22,6 +22,13 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 ENV PHP_OPCACHE_ENABLE="0"
 USER www-data
 
+COPY /config/environments/ /var/www/html/config/environments/
+COPY /config/php-fpm/php.ini /usr/local/etc/php/php.ini
+COPY /config/application.php /var/www/html/config/application.php
+COPY /vendor /var/www/html/vendor
+COPY /web /var/www/html/web
+COPY /wp-cli.yml /var/www/html/wp-cli.yml
+
 #################################################################################
 # DEPLOY: for actual deployment — any environment
 #################################################################################
