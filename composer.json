@@ -24,7 +24,6 @@
     "vlucas/phpdotenv": "^5.6"
   },
   "require-dev": {
-    "roave/security-advisories": "dev-latest"
   },
   "config": {
     "allow-plugins": {
