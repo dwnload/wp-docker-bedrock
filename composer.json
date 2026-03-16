@@ -4,11 +4,12 @@
   "license": "MIT",
   "repositories": [
     {
+      "name": "wp-composer",
       "type": "composer",
-      "url": "https://wpackagist.org",
+      "url": "https://repo.wp-composer.com",
       "only": [
-        "wpackagist-plugin/*",
-        "wpackagist-theme/*"
+        "wp-plugin/*",
+        "wp-theme/*"
       ]
     }
   ],
@@ -20,11 +21,10 @@
     "roots/bedrock-disallow-indexing": "^2.0",
     "roots/wordpress": "^6.8.1",
     "roots/wp-config": "^1.0",
-    "wpackagist-theme/twentytwentyfive": "^1.0",
+    "wp-theme/twentytwentyfive": "^1.0",
     "vlucas/phpdotenv": "^5.6"
   },
-  "require-dev": {
-  },
+  "require-dev": {},
   "config": {
     "allow-plugins": {
       "composer/installers": true,
@@ -53,6 +53,5 @@
     },
     "wordpress-install-dir": "web/wp"
   },
-  "scripts": {
-  }
+  "scripts": {}
 }
