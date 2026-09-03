@@ -1,6 +1,6 @@
 # syntax=docker.io/docker/dockerfile:1.7-labs
 # @see https://stackoverflow.com/a/78110854/558561
-ARG PHP_VERSION=8.3
+ARG PHP_VERSION=8.5
 ARG WITH_XDEBUG=true
 FROM serversideup/php:${PHP_VERSION}-fpm AS base
 

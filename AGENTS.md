@@ -33,7 +33,7 @@ and Redis.
 
 - `mariadb` — MariaDB 11.5 (port 3306)
 - `nginx` — Nginx with SSL (ports 8080→80, 9443→443)
-- `php-fpm` — PHP 8.3-FPM with Xdebug option (builds from `Dockerfiles/php-fpm/Dockerfile`)
+- `php-fpm` — PHP 8.5-FPM with Xdebug option (builds from `Dockerfiles/php-fpm/Dockerfile`)
 - `redis` — Redis 7.4 Alpine (internal port 6379, 128MB maxmemory)
 
 **PHP Dependencies (`composer.json`):**
@@ -41,7 +41,7 @@ and Redis.
 - Uses `wp-composer` repo (was wpackagist) for WordPress plugins/themes
 - Composer installer paths: `web/app/plugins/`, `web/app/themes/`, `web/app/mu-plugins/`
 - WordPress installs to `web/wp`
-- PHP 8.3 minimum
+- PHP 8.5 minimum
 
 ## Running the Project
 
@@ -70,7 +70,7 @@ All environment variables are managed via `.env` (copied from `.env.example`). K
 
 | Variable                                      | Purpose                                              |
 |-----------------------------------------------|------------------------------------------------------|
-| `PHP_VERSION`                                 | PHP version for Docker build (default: 8.3)          |
+| `PHP_VERSION`                                 | PHP version for Docker build (default: 8.5)          |
 | `WITH_XDEBUG`                                 | Enable Xdebug in dev (default: true)                 |
 | `WP_VERSION`                                  | WordPress version (default: 7.1)                   |
 | `WP_ENV`                                      | Environment: local, development, staging, production |
