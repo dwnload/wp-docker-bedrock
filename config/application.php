@@ -142,7 +142,7 @@ ini_set('display_errors', '0');
 Config::define('WP_MEMORY_LIMIT', env('WP_MEMORY_LIMIT') ?? '512M');
 Config::define('WP_REDIS_HOST', env('WP_REDIS_HOST') ?? 'redis');
 Config::define('WP_REDIS_PORT', env('WP_REDIS_PORT') ?? '6379');
-Config::define('WP_REDIS_PREFIX', env('WP_REDIS_PREFIX') ?? 'health_');
+Config::define('WP_REDIS_PREFIX', env('WP_REDIS_PREFIX') ?? htmlspecialchars(env('HTTP_HOST'), ENT_QUOTES, 'UTF-8') . '_');
 
 /**
  * Allow WordPress to detect HTTPS when used behind a reverse proxy or a load balancer
