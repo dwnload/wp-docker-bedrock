@@ -59,7 +59,7 @@ services:
     #  - "${HTTP_HOST}:172.17.0.1"
 
   redis:
-    image: redis:7.4-alpine
+    image: redis:8.10-alpine
     restart: always
     expose:
       - "6379"
