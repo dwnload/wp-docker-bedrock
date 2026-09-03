@@ -10,23 +10,17 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+      - name: Setup
+        id: ci-setup
+        uses: thefrosty/ci-setup@main
         with:
+          extensions-cache-key: run-security-checker
           php-version: "8.3"
-          coverage: none
-          tools: composer:v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Run composer install
-        run: |
-          composer install --no-interaction
-
-      - uses: actions/cache@v6
-        id: cache-db
-        with:
-          path: ~/.symfony/cache
-          key: db
+#      - name: Run composer install
+#        run: |
+#          composer install --no-interaction
 
       - uses: symfonycorp/security-checker-action@v5
+        if: contains(steps.ci-setup.outputs.files, 'composer.json')
