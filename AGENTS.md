@@ -72,7 +72,7 @@ All environment variables are managed via `.env` (copied from `.env.example`). K
 |-----------------------------------------------|------------------------------------------------------|
 | `PHP_VERSION`                                 | PHP version for Docker build (default: 8.3)          |
 | `WITH_XDEBUG`                                 | Enable Xdebug in dev (default: true)                 |
-| `WP_VERSION`                                  | WordPress version (default: 6.8.1)                   |
+| `WP_VERSION`                                  | WordPress version (default: 7.1)                   |
 | `WP_ENV`                                      | Environment: local, development, staging, production |
 | `SSL_MODE`                                    | SSL mode: mixed, http, https                         |
 | `MYSQL_ROOT_PASSWORD`, `MYSQL_DATABASE`, etc. | Database credentials                                 |
