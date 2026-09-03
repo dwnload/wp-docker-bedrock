@@ -17,6 +17,7 @@ Thumbs.db
 .env
 node_modules
 
+!config/sql/*.sql
 /vendor/
 composer.lock
 
